@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="21ed2dab-8671-4dd1-bd8e-7c0154d4902d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\Administrator\.m2\wrapper\dists\apache-maven-3.6.3-bin\1iopthnavndlasol9gbrbg6bf2\apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadDocsAutomatically" value="true" />
+        <option name="downloadSourcesAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1rFFeDAo5fW0OkZwl1ENzIjH44f" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/尚医通/代码/02-尚医通后端代码/yygh_parent" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="YyghParentApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="yygh_parent" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.www.YyghParentApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration useDefault="false">C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="21ed2dab-8671-4dd1-bd8e-7c0154d4902d" name="Default Changelist" comment="" />
+      <created>1618564025133</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618564025133</updated>
+      <workItem from="1618564027133" duration="1228000" />
+      <workItem from="1618984204843" duration="1397000" />
+      <workItem from="1618985630009" duration="1042000" />
+      <workItem from="1618987034534" duration="1518000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="394" y="163" width="1526" height="747" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618988458428">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="394" y="163" width="1526" height="747" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1618988458428" />
+    <state x="687" y="213" key="FileChooserDialogImpl" timestamp="1618987264810">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="687" y="213" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1618987264810" />
+    <state width="1859" height="562" key="GridCell.Tab.0.bottom" timestamp="1618793268665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1859" height="562" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618793268665" />
+    <state width="1859" height="562" key="GridCell.Tab.0.center" timestamp="1618793268665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1859" height="562" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618793268665" />
+    <state width="1859" height="562" key="GridCell.Tab.0.left" timestamp="1618793268665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1859" height="562" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618793268665" />
+    <state width="1859" height="562" key="GridCell.Tab.0.right" timestamp="1618793268665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1859" height="562" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618793268665" />
+    <state x="329" y="0" key="SettingsEditor" timestamp="1618988573900">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="329" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618988573900" />
+    <state x="148" y="96" key="new project wizard" timestamp="1618988570429">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="148" y="96" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1618988570429" />
+  </component>
+</project>
