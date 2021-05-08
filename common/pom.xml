@@ -16,7 +16,6 @@
         <module>service-util</module>
     </modules>
 
-    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -47,7 +46,6 @@
             <artifactId>springfox-swagger-ui</artifactId>
         </dependency>
     </dependencies>
-    </dependencyManagement>
 
 
 </project>
