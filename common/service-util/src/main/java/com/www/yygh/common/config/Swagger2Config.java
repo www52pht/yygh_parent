@@ -63,7 +63,7 @@ public class Swagger2Config {
                 .title("后台管理系统-API文档")
                 .description("本文档描述了后台管理系统微服务接口定义")
                 .version("1.0")
-                .contact(new Contact("atguigu", "https://blog.csdn.net/qq_37014317", "1780910546@qq.com"))
+                .contact(new Contact("www", "https://blog.csdn.net/qq_37014317", "1780910546@qq.com"))
                 .build();
     }
 
