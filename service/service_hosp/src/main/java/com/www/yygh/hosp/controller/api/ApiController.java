@@ -1,6 +1,5 @@
 package com.www.yygh.hosp.controller.api;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.www.yygh.common.exception.YyghException;
 import com.www.yygh.common.helper.HttpRequestHelper;
 import com.www.yygh.common.result.Result;
@@ -12,9 +11,9 @@ import com.www.yygh.hosp.service.HospitalSetService;
 import com.www.yygh.model.hosp.Department;
 import com.www.yygh.model.hosp.Hospital;
 import com.www.yygh.vo.hosp.DepartmentQueryVo;
-import com.www.yygh.vo.hosp.DepartmentVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -100,7 +99,7 @@ public class ApiController {
     }
 
     //查询科室接口
-    @PostMapping("department/list")
+    @PostMapping("/department/list")
     public Result findDepartment(HttpServletRequest request) {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
@@ -138,7 +137,7 @@ public class ApiController {
         String signKeyMd5 = MD5.encrypt(hospSign);
 
         //4 判断签名是否一致
-        if (!hospSign.equals(signKeyMd5)) {
+        if (!sign.equals(signKeyMd5)) {
             throw new YyghException(ResultCodeEnum.SIGN_ERROR);
         }
 

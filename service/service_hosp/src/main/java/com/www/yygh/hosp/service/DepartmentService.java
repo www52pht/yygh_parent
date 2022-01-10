@@ -1,8 +1,8 @@
 package com.www.yygh.hosp.service;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.www.yygh.model.hosp.Department;
 import com.www.yygh.vo.hosp.DepartmentQueryVo;
+import org.springframework.data.domain.Page;
 
 import java.util.Map;
 

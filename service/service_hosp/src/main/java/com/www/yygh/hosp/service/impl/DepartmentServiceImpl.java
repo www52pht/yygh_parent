@@ -1,7 +1,6 @@
 package com.www.yygh.hosp.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.www.yygh.hosp.repository.DepartmentRepository;
 import com.www.yygh.hosp.service.DepartmentService;
 import com.www.yygh.model.hosp.Department;
@@ -11,6 +10,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -62,7 +62,7 @@ public class DepartmentServiceImpl implements DepartmentService {
                 .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
                 .withIgnoreCase(true);
         Example<Department> example = Example.of(department, matcher);
-        Page<Department> all = (Page<Department>) departmentRepository.findAll(example, pageable);
+        Page<Department> all =departmentRepository.findAll(example, pageable);
 
         return all;
     }
