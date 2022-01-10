@@ -1,5 +1,6 @@
 package com.www.yygh.hosp.controller.api;
 
+import com.sun.xml.internal.ws.developer.MemberSubmissionAddressing;
 import com.www.yygh.common.exception.YyghException;
 import com.www.yygh.common.helper.HttpRequestHelper;
 import com.www.yygh.common.result.Result;
@@ -8,6 +9,7 @@ import com.www.yygh.common.utils.MD5;
 import com.www.yygh.hosp.service.DepartmentService;
 import com.www.yygh.hosp.service.HospitalService;
 import com.www.yygh.hosp.service.HospitalSetService;
+import com.www.yygh.hosp.service.ScheduleService;
 import com.www.yygh.model.hosp.Department;
 import com.www.yygh.model.hosp.Hospital;
 import com.www.yygh.vo.hosp.DepartmentQueryVo;
@@ -38,9 +40,12 @@ public class ApiController {
     @Autowired
     private DepartmentService departmentService;
 
+    @Autowired
+    private ScheduleService scheduleService;
+
     //上传医院接口
     @ApiOperation(value = "上传医院")
-    @PostMapping("saveHospital")
+    @PostMapping("/saveHospital")
     public Result saveHosp(HttpServletRequest request) {
         //获取传递过来医院信息
         Map<String, String[]> requestMap = request.getParameterMap();
@@ -74,7 +79,7 @@ public class ApiController {
 
     //查询医院接口
     @ApiOperation(value = "获取医院信息")
-    @PostMapping("hospital/show")
+    @PostMapping("/hospital/show")
     public Result hospital(HttpServletRequest request) {
         //获取传递过来医院信息
         Map<String, String[]> requestMap = request.getParameterMap();
@@ -98,9 +103,21 @@ public class ApiController {
         return Result.ok(hospital);
     }
 
+    //上传排班接口
+    @PostMapping("/saveSchedule")
+    public Result saveSchedule(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        //todo 签名校验
+        scheduleService.save(paramMap);
+        return Result.ok();
+    }
     //删除科室接口
-    @PostMapping("department/remove")
+    @PostMapping("/department/remove")
     public Result removeDepartment(HttpServletRequest request) {
+
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
         Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
@@ -114,7 +131,7 @@ public class ApiController {
     }
 
     //查询科室接口
-    @PostMapping("department/list")
+    @PostMapping("/department/list")
     public Result findDepartment(HttpServletRequest request) {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
@@ -134,7 +151,7 @@ public class ApiController {
     }
 
     //上传科室接口
-    @PostMapping("saveDepartment")
+    @PostMapping("/saveDepartment")
     public Result saveDepartment(HttpServletRequest request) {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();
