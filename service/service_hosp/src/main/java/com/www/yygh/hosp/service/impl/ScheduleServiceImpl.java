@@ -7,12 +7,16 @@ import com.www.yygh.hosp.repository.DepartmentRepository;
 import com.www.yygh.hosp.repository.ScheduleRepository;
 import com.www.yygh.hosp.service.ScheduleService;
 import com.www.yygh.model.hosp.Schedule;
+import com.www.yygh.vo.hosp.ScheduleQueryVo;
 import org.bson.json.StrictCharacterStreamJsonWriter;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.Map;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * @author www
@@ -55,5 +59,34 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule> i
 
         }
 
+    }
+
+    /**
+     * 查询排班接口
+     *
+     * @param page
+     * @param limit
+     * @param scheduleQueryVo
+     * @return
+     */
+    @Override
+    public Page<Schedule> findPageSchedule(int page, int limit, ScheduleQueryVo scheduleQueryVo) {
+        // 创建Pageable对象，设置当前页和每页记录数
+        //0是第一页
+        Pageable pageable = PageRequest.of(page-1,limit);
+
+        //创建Example对象
+        Schedule schedule = new Schedule();
+        BeanUtils.copyProperties(scheduleQueryVo, schedule);
+        schedule.setIsDeleted(0);
+        schedule.setStatus(1);
+
+        ExampleMatcher match = ExampleMatcher.matching()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+                .withIgnoreCase(true);
+        Example<Schedule> example = Example.of(schedule, match);
+
+        Page<Schedule> all = scheduleRepository.findAll(example, pageable);
+        return all;
     }
 }

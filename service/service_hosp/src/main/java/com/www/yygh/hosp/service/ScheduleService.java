@@ -1,5 +1,9 @@
 package com.www.yygh.hosp.service;
 
+import com.www.yygh.model.hosp.Schedule;
+import com.www.yygh.vo.hosp.ScheduleQueryVo;
+import org.springframework.data.domain.Page;
+
 import java.util.Map;
 
 /**
@@ -8,4 +12,6 @@ import java.util.Map;
  */
 public interface ScheduleService {
     void save(Map<String, Object> paramMap);
+
+    Page<Schedule> findPageSchedule(int page, int limit, ScheduleQueryVo scheduleQueryVo);
 }
