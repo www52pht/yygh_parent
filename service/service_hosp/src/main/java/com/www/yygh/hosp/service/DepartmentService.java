@@ -1,5 +1,9 @@
 package com.www.yygh.hosp.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.www.yygh.model.hosp.Department;
+import com.www.yygh.vo.hosp.DepartmentQueryVo;
+
 import java.util.Map;
 
 /**
@@ -12,4 +16,14 @@ public interface DepartmentService {
      * @param paramMap
      */
     void save(Map<String, Object> paramMap);
+
+    /**
+     * 查询科室接口
+     * @param page
+     * @param limit
+     * @param departmentQueryVo
+     * @return
+     */
+    Page<Department> findPageDepartment(int page, int limit, DepartmentQueryVo departmentQueryVo);
+
 }

@@ -1,5 +1,6 @@
 package com.www.yygh.hosp.controller.api;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.www.yygh.common.exception.YyghException;
 import com.www.yygh.common.helper.HttpRequestHelper;
 import com.www.yygh.common.result.Result;
@@ -8,7 +9,10 @@ import com.www.yygh.common.utils.MD5;
 import com.www.yygh.hosp.service.DepartmentService;
 import com.www.yygh.hosp.service.HospitalService;
 import com.www.yygh.hosp.service.HospitalSetService;
+import com.www.yygh.model.hosp.Department;
 import com.www.yygh.model.hosp.Hospital;
+import com.www.yygh.vo.hosp.DepartmentQueryVo;
+import com.www.yygh.vo.hosp.DepartmentVo;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -93,6 +97,26 @@ public class ApiController {
 
         Hospital hospital = hospitalService.getByHoscode(hoscode);
         return Result.ok(hospital);
+    }
+
+    //查询科室接口
+    @PostMapping("department/list")
+    public Result findDepartment(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+
+        //医院编码
+        String hoscode = (String) paramMap.get("hoscode");
+        //当前页 和 每页记录数
+        int page = StringUtils.isEmpty(paramMap.get("page")) ? 1 : Integer.parseInt((String) paramMap.get("page"));
+        int limit = StringUtils.isEmpty(paramMap.get("limit")) ? 1 : Integer.parseInt((String) paramMap.get("limit"));
+        //todo 签名校验
+
+        DepartmentQueryVo departmentQueryVo = new DepartmentQueryVo();
+        departmentQueryVo.setHoscode(hoscode);
+        Page<Department> pageModel = departmentService.findPageDepartment(page, limit, departmentQueryVo);
+        return Result.ok(pageModel);
     }
 
     //上传科室接口

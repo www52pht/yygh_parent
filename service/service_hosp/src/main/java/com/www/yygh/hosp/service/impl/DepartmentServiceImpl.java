@@ -1,11 +1,17 @@
 package com.www.yygh.hosp.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.www.yygh.hosp.repository.DepartmentRepository;
 import com.www.yygh.hosp.service.DepartmentService;
 import com.www.yygh.model.hosp.Department;
+import com.www.yygh.vo.hosp.DepartmentQueryVo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -41,4 +47,24 @@ public class DepartmentServiceImpl implements DepartmentService {
             departmentRepository.save(department);
         }
     }
+
+    @Override
+    public Page<Department> findPageDepartment(int page, int limit, DepartmentQueryVo departmentQueryVo) {
+        //创建Pageable对象，设置当前页和每页记录数
+        //0是第一页
+        PageRequest pageable = PageRequest.of(page - 1, limit);
+        //创建Example对象
+        Department department = new Department();
+        BeanUtils.copyProperties(departmentQueryVo, department);
+        department.setIsDeleted(0);
+
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+                .withIgnoreCase(true);
+        Example<Department> example = Example.of(department, matcher);
+        Page<Department> all = (Page<Department>) departmentRepository.findAll(example, pageable);
+
+        return all;
+    }
+
 }
