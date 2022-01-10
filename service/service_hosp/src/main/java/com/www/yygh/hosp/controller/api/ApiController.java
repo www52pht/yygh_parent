@@ -57,8 +57,8 @@ public class ApiController {
         //传输过程中“+”转换为了“ ”，因此我们要转换回来
         String logoData = (String) paramMap.get("logoData");
         if(!StringUtils.isEmpty(logoData)) {
-            logoData.replaceAll(" ", "+");
-            paramMap.put("logoData", logoData);
+            String replaceAll = logoData.replaceAll(" ", "+");
+            paramMap.put("logoData", replaceAll);
         }
         //调用service的方法
         hospitalService.save(paramMap);
