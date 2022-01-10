@@ -89,4 +89,18 @@ public class ScheduleServiceImpl extends ServiceImpl<ScheduleMapper, Schedule> i
         Page<Schedule> all = scheduleRepository.findAll(example, pageable);
         return all;
     }
+
+    /**
+     * 删除排班
+     * @param hoscode
+     * @param hosScheduleId
+     */
+    @Override
+    public void remove(String hoscode, String hosScheduleId) {
+        //根据医院编号和排班编号查询信息
+        Schedule schedule = scheduleRepository.getScheduleByHoscodeAndHosScheduleId(hoscode, hosScheduleId);
+        if (schedule != null) {
+            scheduleRepository.deleteById(schedule.getId());
+        }
+    }
 }

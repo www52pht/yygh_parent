@@ -105,6 +105,22 @@ public class ApiController {
         return Result.ok(hospital);
     }
 
+    //删除排班
+    @PostMapping("schedule/remove")
+    public Result remove(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //获取医院编号和排班编号
+        String hoscode = (String)paramMap.get("hoscode");
+        String hosScheduleId = (String) paramMap.get("hosScheduleId");
+
+        //todo 签名校验
+
+        scheduleService.remove(hoscode, hosScheduleId);
+        return Result.ok();
+    }
+
     //查询排班接口
     @PostMapping("/schedule/list")
     public Result findSchedule(HttpServletRequest request) {
@@ -131,6 +147,7 @@ public class ApiController {
         Page<Schedule> pageModel = scheduleService.findPageSchedule(page, limit, scheduleQueryVo);
         return Result.ok(pageModel);
     }
+
     //上传排班接口
     @PostMapping("/saveSchedule")
     public Result saveSchedule(HttpServletRequest request) {
@@ -142,6 +159,7 @@ public class ApiController {
         scheduleService.save(paramMap);
         return Result.ok();
     }
+
     //删除科室接口
     @PostMapping("/department/remove")
     public Result removeDepartment(HttpServletRequest request) {
