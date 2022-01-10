@@ -26,4 +26,5 @@ public interface DepartmentService {
      */
     Page<Department> findPageDepartment(int page, int limit, DepartmentQueryVo departmentQueryVo);
 
+    void remove(String hoscode, String depcode);
 }

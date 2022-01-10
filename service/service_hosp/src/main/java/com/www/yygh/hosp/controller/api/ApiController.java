@@ -98,8 +98,23 @@ public class ApiController {
         return Result.ok(hospital);
     }
 
+    //删除科室接口
+    @PostMapping("department/remove")
+    public Result removeDepartment(HttpServletRequest request) {
+        //获取传递过来科室信息
+        Map<String, String[]> requestMap = request.getParameterMap();
+        Map<String, Object> paramMap = HttpRequestHelper.switchMap(requestMap);
+        //医院编码 和 科室编码
+        String hoscode = (String) paramMap.get("hoscode");
+        String depcode = (String) paramMap.get("depcode");
+
+        //todo 签名校验
+        departmentService.remove(hoscode, depcode);
+        return Result.ok();
+    }
+
     //查询科室接口
-    @PostMapping("/department/list")
+    @PostMapping("department/list")
     public Result findDepartment(HttpServletRequest request) {
         //获取传递过来科室信息
         Map<String, String[]> requestMap = request.getParameterMap();

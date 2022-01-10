@@ -67,4 +67,19 @@ public class DepartmentServiceImpl implements DepartmentService {
         return all;
     }
 
+    /**
+     * 删除医院接口
+     * @param hoscode
+     * @param depcode
+     */
+    @Override
+    public void remove(String hoscode, String depcode) {
+        //根据医院编码 和 科室编码查询
+        Department department = departmentRepository.getDepartmentByHoscodeAndDepcode(hoscode, depcode);
+        if (department != null) {
+            //调用方法删除
+            departmentRepository.deleteById(department.getId());
+        }
+    }
+
 }
