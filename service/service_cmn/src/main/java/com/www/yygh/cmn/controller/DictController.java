@@ -6,6 +6,7 @@ import com.www.yygh.common.result.Result;
 import com.www.yygh.model.cmn.Dict;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.bouncycastle.asn1.kisa.KISAObjectIdentifiers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,14 @@ public class DictController {
     @GetMapping("findChildData/{id}")
     public Result FindChildData(@PathVariable Long id) {
         List<Dict> list = dictService.findChildData(id);
+        return Result.ok(list);
+    }
+
+    //根据dictCode获取下级节点
+    @ApiOperation(value = "根据dictCode获取下级节点")
+    @GetMapping("findByDictCode/{dictCode}")
+    public Result findByDictCode(@PathVariable String dictCode) {
+        List<Dict> list = dictService.findByDictCode(dictCode);
         return Result.ok(list);
     }
 

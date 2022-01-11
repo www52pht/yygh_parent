@@ -96,14 +96,14 @@ public class HospitalServiceImpl implements HospitalService {
         //根据dictCode和value获取医院等级名称
         String hostypeString = dictFeignClient.getName("Hostype", hospital.getHostype());
         //查询省 市 区
-//        String provinceString = dictFeignClient.getName("Province", hospital.getProvinceCode());
-//        String cityString = dictFeignClient.getName("Province", hospital.getCityCode());
-//        String districtString = dictFeignClient.getName("Province", hospital.getDistrictCode());
+        String provinceString = dictFeignClient.getName("Province", hospital.getProvinceCode());
+        String cityString = dictFeignClient.getName(hospital.getCityCode());
+        String districtString = dictFeignClient.getName(hospital.getDistrictCode());
 
         hospital.getParam().put("hostypeString", hostypeString);
-//        hospital.getParam().put("provinceString", provinceString);
-//        hospital.getParam().put("cityString", cityString);
-//        hospital.getParam().put("districtString", districtString);
+        hospital.getParam().put("provinceString", provinceString);
+        hospital.getParam().put("cityString", cityString);
+        hospital.getParam().put("districtString", districtString);
         return hospital;
     }
 }
