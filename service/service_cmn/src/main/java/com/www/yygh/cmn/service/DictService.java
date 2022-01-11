@@ -14,4 +14,12 @@ import java.util.List;
  */
 public interface DictService extends IService<Dict> {
     List<Dict> findChildData(Long id);
+
+    /**
+     * 根据dictcode和value查询
+     * @param dictCode
+     * @param value
+     * @return
+     */
+    String getDictName(String dictCode, String value);
 }

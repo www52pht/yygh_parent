@@ -6,6 +6,7 @@ import com.www.yygh.cmn.mapper.DicMapper;
 import com.www.yygh.cmn.service.DictService;
 import com.www.yygh.model.cmn.Dict;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -30,6 +31,41 @@ public class DictServiceImpl extends ServiceImpl<DicMapper, Dict> implements Dic
             dict.setHasChildren(isChild);
         }
         return dictList;
+    }
+
+    /**
+     * 根据dictcode和value查询
+     *
+     * @param dictCode
+     * @param value
+     * @return
+     */
+    @Override
+    public String getDictName(String dictCode, String value) {
+        //如果dictCode为空，直接根据value查询
+        if (StringUtils.isEmpty(dictCode)) {
+            //直接根据value查询
+            QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+            wrapper.eq("value", value);
+            Dict dict = baseMapper.selectOne(wrapper);
+            return dict.getName();
+        } else {
+            //如果dictCode不为空，根据dictCode和value查询
+            //根据dictcode查询dict对象，得到dict的id值
+            Dict codeDict = this.getDictByDictCode(dictCode);
+            Long parentId = codeDict.getId();
+            //根据parentId和value进行查询
+            Dict finalDict = baseMapper.selectOne(new QueryWrapper<Dict>().eq("parent_id", parentId)
+                    .eq("value", value));
+            return finalDict.getName();
+        }
+    }
+
+    private Dict getDictByDictCode(String dictCode) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code", dictCode);
+        Dict codeDict = baseMapper.selectOne(wrapper);
+        return codeDict;
     }
 
     //判断id下面是否有子节点
